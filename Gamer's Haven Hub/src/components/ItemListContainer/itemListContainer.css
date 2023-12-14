@@ -1,0 +1,9 @@
+.tituloCategoria {
+  background-color: #fe7f2d;
+  text-align: center;
+  padding: 1rem;
+  color: white;
+  border-bottom: 1px solid #fe7f2d;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}

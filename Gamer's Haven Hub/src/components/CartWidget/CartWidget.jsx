@@ -1,11 +1,9 @@
 import React from 'react'
-import './cartWidget.css'
-import cart from '../../assets/cartWidget.svg'
+import { FaShoppingCart } from 'react-icons/fa';
 const CartWidget = () => {
   return (
     <div>
-        <img className='carrito' src={cart}/>
-        0
+      <h1 style={{color: 'white', fontSize: '1.25rem'}}><FaShoppingCart/>0</h1>
     </div>
   )
 }
