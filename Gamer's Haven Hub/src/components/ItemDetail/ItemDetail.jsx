@@ -12,7 +12,7 @@ const ItemDetail = ({ name, category, img, stock, price, description }) => {
             <li>Categoria: {category}</li>
             <li>Precio: ${price}</li>
             <li>Descripcion: {description}</li>
-            <li><ItemCount initial={1} stock={stock} onAdd={(quantity) => console.log("cantidad agregada", quantity)} /></li>
+            <li><ItemCount initial={1} stock={stock} onAdd={(count) => console.log("cantidad agregada", count)} /></li>
           </ul>
         </div>
       </div>
