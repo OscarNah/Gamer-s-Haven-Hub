@@ -2,17 +2,21 @@ import { useState } from "react";
 import ItemCount from "../ItemCount/ItemCount";
 import "./itemDetail.css";
 import { Link } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
 
 const ItemDetail = ({id, name, category, img, stock, price, description }) => {
-  const [quantityAdded, setQuantityAdded] = useState(0)
+  
+  //const [quantityAdded, setQuantityAdded] = useState(0)
 
-    const handleOnAdd = (count) => {
-        setQuantityAdded(count)
+  const { addItem, isInCart } = useCart()
+
+    const handleOnAdd = (quantity) => {
+        //setQuantityAdded(count)
         const item ={
-            id,name,price
+            id, name, price, quantity
         }
-        console.log(item);
-        console.log(`agregue al carrito:`, count);
+        addItem(item);
+        console.log(`agregue al carrito:`, quantity);
 
     }
 
@@ -29,7 +33,7 @@ const ItemDetail = ({id, name, category, img, stock, price, description }) => {
           </ul>
           <footer>
             {
-              quantityAdded === 0 ? (
+              !isInCart(id) ? (
                 <ItemCount initial={1} stock={stock} onAdd={(handleOnAdd)} />
             ) : (
               <button><Link to="/cart" className="buttonLink">Finalizar compra</Link></button>
