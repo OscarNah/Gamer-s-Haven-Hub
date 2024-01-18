@@ -1,0 +1,7 @@
+# Cambiar el nombre de .envExample a .env y agrega los campos de tu firebase que se te solicitan a continuacion:
+VITE_apikey=
+VITE_authDomain=
+VITE_projectId=
+VITE_storageBucket=
+VITEP_messagingSenderId=
+VITE_appId=
