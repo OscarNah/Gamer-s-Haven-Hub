@@ -37,7 +37,7 @@ const Checkout = () => {
         // Notificacion: El carrito esté vacío
         toast.error(' El carrito esta vacio, no se puede generar la orden!', {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -82,7 +82,7 @@ const Checkout = () => {
         //notificacion de toastify
         toast.error(' No contamos con suficiente stock de algun producto!', {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -95,7 +95,7 @@ const Checkout = () => {
       //error al generar la orden
       toast.error(' Hubo un error al generar la orden, intentelo de nuevo!', {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,

@@ -39,7 +39,7 @@ const CartView = () => {
                   onClick={() => {
                     toast.info("🗑️ Producto eliminado del carrito!", {
                       position: "top-right",
-                      autoClose: 3000,
+                      autoClose: 2000,
                       hideProgressBar: false,
                       closeOnClick: true,
                       pauseOnHover: true,

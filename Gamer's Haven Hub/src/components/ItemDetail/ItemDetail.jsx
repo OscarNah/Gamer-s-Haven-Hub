@@ -24,7 +24,7 @@ const ItemDetail = ({ id, name, category, img, stock, price, description }) => {
     // Notificacion: Agregue al carrito
     toast.success("Producto agregado al carrito con exito!", {
       position: "top-right",
-      autoClose: 3000,
+      autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
