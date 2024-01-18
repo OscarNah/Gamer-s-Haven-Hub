@@ -19,7 +19,7 @@ const ItemListContainer = ({greetings}) => {
       
       getDocs(collectionRef)
       .then(querySnapshot =>{
-        console.log(querySnapshot)
+        //console.log(querySnapshot)
 
         const productsAdapted = querySnapshot.docs.map(doc=>{
           const fields = doc.data()
