@@ -1,0 +1,91 @@
+.tituloCarrito{
+    background-color: #fe7f2d;
+    text-align: center;
+    padding: 1rem;
+    color: white;
+    border-bottom: 1px solid #fe7f2d;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+
+}
+.carritoBg{
+    max-width: 1400px;
+    padding-inline: 1.5rem;
+    margin: 0 auto;
+    padding-block: 1.5rem;
+    background-color: #e5e5e5;
+    margin-top: 0.5rem;
+    border-radius: 1rem;
+}
+.sizeCart{
+    max-width: 1400px;
+    margin: 0 auto;
+
+}
+.indice{
+    font-size: 1.2rem;
+    font-style: italic;
+
+}
+.cartProduct{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.totalCompra{
+    max-width: 1400px;
+    margin-top: 1.5rem ;
+    background-color: #fe7f2d;
+    text-align: end;
+    padding: 1rem;
+    border-bottom: 1px solid #fe7f2d;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.totalCompra button{
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    padding: 1.20rem;
+    border-color: white;
+    background-color: #fe7f2d;
+    border-style: none;
+    border: 1px solid black; 
+    cursor: pointer;
+}
+.totalCompra button:hover{
+    background-color: rgba(0, 0, 0, 0.911);
+}
+.totalCompra h2{
+    background-color: #fe7f2d;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    padding: 1rem;
+    color:white;
+}
+
+.linkStyle{
+    text-decoration: none;
+    color: white; /* Utiliza el color del texto heredado */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el enlace */
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+
+  .borrarProducto{
+    background-color: transparent;
+    border: 0px solid transparent;
+    cursor: pointer;
+  }

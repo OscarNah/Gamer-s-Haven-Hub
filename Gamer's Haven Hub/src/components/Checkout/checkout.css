@@ -1,0 +1,93 @@
+.tituloCheckout {
+  background-color: #fe7f2d;
+  text-align: center;
+  padding: 1rem;
+  color: white;
+  border-bottom: 1px solid #fe7f2d;
+}
+
+.bg {
+  padding-inline: 1.5rem;
+  margin-top: 0;
+  padding-block: 1.5rem;
+  background-color: #e5e5e5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 80vh;
+  background-image: url('https://img2.wallspic.com/previews/4/2/9/3/6/163924/163924-retrojuegos-arcade-gamer-mame-dispositivo_electronico-x750.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+}
+
+.formH1 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #fe7f2d;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.733);
+  border-radius: 0.5rem;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+}
+input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+.checkoutBoton {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #fe7f2d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.checkoutBoton:hover {
+  background-color: #fe812dd3;
+}
+.cont{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ordenId{
+  margin: 3rem;
+  color: #fe7f2d;
+}
+
+.linkStyle{
+  text-decoration: none;
+  color: white; /* Utiliza el color del texto heredado */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el enlace */
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.buttonRegresar{
+  border-radius: 1rem;
+  padding: 1.20rem;
+  background-color: #fe7f2d;
+  border-style: none;
+  border: 1px solid black; 
+  cursor: pointer;
+}
+.buttonRegresar:hover{
+  background-color: rgba(0, 0, 0, 0.911);
+}

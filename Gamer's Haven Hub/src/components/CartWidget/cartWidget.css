@@ -1,5 +1,13 @@
 .botonCarrito{
     background-color: black;
     border: none;
-    
+    cursor: pointer;    
 }
+
+.cartLink{
+    text-decoration: none;
+    color: inherit;
+}
+.cartLink:hover {
+    text-decoration: none;
+  }
