@@ -5,6 +5,9 @@ import { db } from "../../services/firebase/firebaseConfig";
 import { addDoc, getDocs, collection, query, where, documentId, writeBatch } from "firebase/firestore";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+// Toasttify
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Checkout = () => {
   const [orderId, setOrderId] = useState(null);
@@ -14,70 +17,108 @@ const Checkout = () => {
   const { register, handleSubmit } = useForm();
 
   const createOrder = async (userData) => {
-    const objOrder = {
-      buyer: {
-        name: userData.name,
-        phone: userData.phone,
-        email: userData.email,
-      },
-      items: cart,
-      total,
-    };
-
-    const batch = writeBatch(db);
-    const outOfStock = [];
-
-    const ids = cart.map((prod) => prod.id);
-
-    if (ids.length === 0) {
-      // Manejar el caso en que el carrito esté vacío
-      console.error("El carrito está vacío. No se puede realizar la consulta.");
-      return;
-    }
-
-    const productsCollection = query(collection(db, "products"), where(documentId(), "in", ids));
-
-    // getDocs(productsCollection).then(documentSnapshot => console.log(documentSnapshot))
-
-    const { docs } = await getDocs(productsCollection);
-
-    docs.forEach((doc) => {
-      const dataDoc = doc.data();
-      const stockDb = dataDoc.stock;
-
-      const productAddedToCart = cart.find((prod) => prod.id === doc.id);
-      const prodQuantity = productAddedToCart?.quantity;
-
-      if (stockDb >= prodQuantity) {
-        batch.update(doc.ref, { stock: stockDb - prodQuantity });
-      } else {
-        outOfStock.push({ id: doc.id, ...dataDoc });
+    try{
+      const objOrder = {
+        buyer: {
+          name: userData.name,
+          phone: userData.phone,
+          email: userData.email,
+        },
+        items: cart,
+        total,
+      };
+  
+      const batch = writeBatch(db);
+      const outOfStock = [];
+  
+      const ids = cart.map((prod) => prod.id);
+  
+      if (ids.length === 0) {
+        // Notificacion: El carrito esté vacío
+        toast.error(' El carrito esta vacio, no se puede generar la orden!', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          });
+        // console.error("El carrito está vacío. No se puede realizar la consulta.");
+        return;
       }
-    });
-
-    if (outOfStock.length === 0) {
-      batch.commit();
-
-      const ordersCollecction = collection(db, "orders");
-
-      const { id } = await addDoc(ordersCollecction, objOrder);
-
-      clearCart();
-      setOrderId(id);
-    } else {
-      //notificacion pendiente
+  
+      const productsCollection = query(collection(db, "products"), where(documentId(), "in", ids));
+  
+      // getDocs(productsCollection).then(documentSnapshot => console.log(documentSnapshot))
+  
+      const { docs } = await getDocs(productsCollection);
+  
+      docs.forEach((doc) => {
+        const dataDoc = doc.data();
+        const stockDb = dataDoc.stock;
+  
+        const productAddedToCart = cart.find((prod) => prod.id === doc.id);
+        const prodQuantity = productAddedToCart?.quantity;
+  
+        if (stockDb >= prodQuantity) {
+          batch.update(doc.ref, { stock: stockDb - prodQuantity });
+        } else {
+          outOfStock.push({ id: doc.id, ...dataDoc });
+        }
+      });
+  
+      if (outOfStock.length === 0) {
+        batch.commit();
+  
+        const ordersCollecction = collection(db, "orders");
+  
+        const { id } = await addDoc(ordersCollecction, objOrder);
+  
+        clearCart();
+        setOrderId(id);
+      } else {
+        //notificacion de toastify
+        toast.error(' No contamos con suficiente stock de algun producto!', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          });
+      }
+    } catch{
+      //error al generar la orden
+      toast.error(' Hubo un error al generar la orden, intentelo de nuevo!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
     }
+
+    
   };
 
   if (orderId) {
     return (
       <>
-      <div className="cont">
-        <h1 className="ordenId"> El ID de su orden es: {orderId} </h1>
-        <button className="buttonRegresar">
-          <Link className="linkStyle" to={"/"}>Regresar a inicio</Link>
-        </button>
-      </div>
+        <div className="cont">
+          <h1 className="ordenId"> El ID de su orden es: {orderId} </h1>
+          <button className="buttonRegresar">
+            <Link className="linkStyle" to={"/"}>
+              Seguir comprando
+            </Link>
+          </button>
+        </div>
       </>
     );
   }
@@ -95,6 +136,7 @@ const Checkout = () => {
           <button className="checkoutBoton" type="submit">
             Generar orden
           </button>
+          <ToastContainer />
         </form>
       </div>
     </>

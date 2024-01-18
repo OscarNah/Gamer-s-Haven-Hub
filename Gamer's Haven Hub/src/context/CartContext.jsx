@@ -1,4 +1,7 @@
 import { useState, createContext, useContext } from "react";
+// Toasttify
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const CartContext = createContext({
     cart: [],
@@ -27,6 +30,7 @@ export const CartProvider = ({ children }) => {
     const removeItem = (productId) => {
         const cartUpdated = cart.filter(prod => prod.id !== productId)
         setCart(cartUpdated)
+
     }
 
     const clearCart = () => {
